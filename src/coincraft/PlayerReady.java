@@ -18,7 +18,11 @@ public class PlayerReady implements Listener {
     @org.bukkit.event.EventHandler(priority=org.bukkit.event.EventPriority.LOW)
     public void onPlayerReady(final org.bukkit.event.block.NotePlayEvent eve)
     {
+        
         // The player is ready. Send them to jon.
+        // HTTP 404: Not Registered
+        // HTTP 402: Not Paid
+        // HTTP 200: Ready
         
     }
 }

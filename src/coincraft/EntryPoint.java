@@ -4,12 +4,10 @@
  * and open the template in the editor.
  */
 package coincraft;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Random;
-import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.Location;
+import org.bukkit.Material;
 /**
  *
  * @author tking
@@ -26,6 +24,8 @@ public class EntryPoint extends JavaPlugin {
          this.getServer().getPluginManager().registerEvents(new PlayerReady(this.getServer()), this);
          this.getServer().getPluginManager().registerEvents(new PlayerJoined(this.getServer()), this);
  //        java.util.List<org.bukkit.World> w = this.getServer().getWorlds();
+         this.getServer().getWorld("jail").setPVP(false);
+         this.getServer().getWorld("battle").setPVP(true);
          this.battle = new Location(this.getServer().getWorld("battle"), 66, 68, 204); 
          this.jail = new Location(this.getServer().getWorld("jail"), -32, 65,15);
         //this.getServer().getWorld("battle").setSpawnLocation(66, 68, 204);
@@ -40,7 +40,8 @@ public class EntryPoint extends JavaPlugin {
              }
            }
          Location diamond = new Location(this.getServer().getWorld("battle"),(double)59 + randomizer.nextInt(83 - 59),(double)randomizer.nextInt(5) + 1,(double) 197 + randomizer.nextInt(218 - 197));
-        this.getServer().getLogger().info("Diamond ore at: " + diamond.toString());
+         this.getServer().getWorld("battle").getBlockAt(diamond).setType(Material.DIAMOND_ORE);
+         this.getServer().getLogger().info("Diamond ore at: " + diamond.toString());
        
 //this.getServer().getWorld("battle").getBlockAt(diamond).setType(org.bukkit.Material.DIAMOND_ORE);
        
