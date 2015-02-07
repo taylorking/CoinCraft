@@ -27,8 +27,7 @@ public class BlockBreak implements org.bukkit.event.Listener {
         else if(eve.getBlock().getType().equals(org.bukkit.Material.DIAMOND_ORE))
         {
             try{
-            java.net.URL url = new java.net.URL("http://");
-            java.net.URLConnection conn = url.openConnection(); 
+                
             
             } catch (Exception ex) {
            
