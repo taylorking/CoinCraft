@@ -24,10 +24,12 @@ public class EntryPoint extends JavaPlugin {
          this.getServer().getLogger().info("Coincraft Enabled.");
          this.getServer().getPluginManager().registerEvents(new BlockBreak(this.getServer()), this);
          this.getServer().getPluginManager().registerEvents(new PlayerReady(this.getServer()), this);
+         this.getServer().getPluginManager().registerEvents(new PlayerJoined(this.getServer()), this);
  //        java.util.List<org.bukkit.World> w = this.getServer().getWorlds();
          this.battle = new Location(this.getServer().getWorld("battle"), 66, 68, 204); 
          this.jail = new Location(this.getServer().getWorld("jail"), -32, 65,15);
         //this.getServer().getWorld("battle").setSpawnLocation(66, 68, 204);
+         // Zero the diamonds in our chunk.
          for(int x = 59; x < 83; x++) {
              for(int y = 0 ; y < this.getServer().getWorld("battle").getMaxHeight(); y++) { 
                  for(int z = 197; z < 218; z++) {
@@ -42,5 +44,11 @@ public class EntryPoint extends JavaPlugin {
        
 //this.getServer().getWorld("battle").getBlockAt(diamond).setType(org.bukkit.Material.DIAMOND_ORE);
        
+    }
+    public Location getBattle() {
+        return this.battle;
+    }
+    public Location getJail() {
+        return this.jail;
     }
 }

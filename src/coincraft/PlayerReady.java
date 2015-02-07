@@ -16,8 +16,9 @@ public class PlayerReady implements Listener {
         this.server = s;
     }
     @org.bukkit.event.EventHandler(priority=org.bukkit.event.EventPriority.LOW)
-    public void onPlayerReady(final org.bukkit.event.block.SignChangeEvent eve)
+    public void onPlayerReady(final org.bukkit.event.block.NotePlayEvent eve)
     {
-        System.out.println(eve.toString());
+        // The player is ready. Send them to jon.
+        
     }
 }
