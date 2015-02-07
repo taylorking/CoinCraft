@@ -1,0 +1,8 @@
+## YAML Template.
+---
+name: Coincraft
+main: coincraft.EntryPoint
+version: 0.0.0.1 
+worlds:
+    Battle:
+        generator: coincraft.WorldGen
