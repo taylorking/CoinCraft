@@ -26,7 +26,7 @@ public class WorldLoaded implements Listener{
         test = eve.getWorld().toString();
         if(eve.getWorld().getName().equals("jail")){
            eve.getWorld().setPVP(false);
-           this.master.setJail(new Location(eve.getWorld(), -32, 65, 14));
+           this.master.setJail(new Location(eve.getWorld(), 8, 69, -4));
             this.server.createWorld(new org.bukkit.WorldCreator("battle"));
             this.master.setBattle(new Location(this.server.getWorld("battle"),66, 68, 204));
         }

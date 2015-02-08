@@ -20,6 +20,7 @@ public class PlayerJoined implements org.bukkit.event.Listener {
     @org.bukkit.event.EventHandler(priority = org.bukkit.event.EventPriority.LOW)
     public void onPlayerJoined(final org.bukkit.event.player.PlayerJoinEvent eve) {
         this.master.getOnline().add(eve.getPlayer());
+        eve.getPlayer().teleport(this.master.getJail());
         //    eve.getPlayer().teleport(new org.bukkit.Location(this.server.getWorld("battle"),66, 208, 68));
     }
     

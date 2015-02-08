@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/coincraft/PlayerReady.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>53</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/tking/NetBeansProjects/CoinCraft/src/coincraft/Globals.java</file>
             <file>file:/Users/tking/NetBeansProjects/CoinCraft/src/plugin.yml</file>
-            <file>file:/Users/tking/NetBeansProjects/CoinCraft/src/coincraft/WorldGen.java</file>
+            <file>file:/Users/tking/NetBeansProjects/CoinCraft/src/coincraft/WorldLoaded.java</file>
+            <file>file:/Users/tking/NetBeansProjects/CoinCraft/src/coincraft/PlayerLeaves.java</file>
+            <file>file:/Users/tking/NetBeansProjects/CoinCraft/src/config.yml</file>
             <file>file:/Users/tking/NetBeansProjects/CoinCraft/src/coincraft/EntryPoint.java</file>
+            <file>file:/Users/tking/NetBeansProjects/CoinCraft/src/coincraft/BlockPlace.java</file>
             <file>file:/Users/tking/NetBeansProjects/CoinCraft/src/coincraft/PlayerJoined.java</file>
+            <file>file:/Users/tking/NetBeansProjects/CoinCraft/src/coincraft/PlayerReady.java</file>
+            <file>file:/Users/tking/NetBeansProjects/CoinCraft/build.xml</file>
+            <file>file:/Users/tking/NetBeansProjects/CoinCraft/manifest.mf</file>
             <file>file:/Users/tking/NetBeansProjects/CoinCraft/src/coincraft/BlockBreak.java</file>
         </group>
     </open-files>

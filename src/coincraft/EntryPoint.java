@@ -25,6 +25,7 @@ public class EntryPoint extends JavaPlugin {
       online_players = new HashSet<Player>();
      Random randomizer = new Random();
          this.getServer().getLogger().info("Coincraft Enabled.");
+         this.getServer().getPluginManager().registerEvents(new DispenserBlock(this.getServer()), this);
          this.getServer().getPluginManager().registerEvents(new BlockBreak(this.getServer(), this), this);
          this.getServer().getPluginManager().registerEvents(new PlayerReady(this.getServer(), this), this);
          this.getServer().getPluginManager().registerEvents(new PlayerJoined(this.getServer(), this), this);
