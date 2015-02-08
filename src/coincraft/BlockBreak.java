@@ -12,7 +12,7 @@ package coincraft;
  */
 public class BlockBreak implements org.bukkit.event.Listener {
     private org.bukkit.Server server;
-    public BlockBreak(org.bukkit.Server server)
+    public BlockBreak(org.bukkit.Server server, EntryPoint p)
     {
         this.server = server;
     }        
@@ -26,13 +26,7 @@ public class BlockBreak implements org.bukkit.event.Listener {
         }
         else if(eve.getBlock().getType().equals(org.bukkit.Material.DIAMOND_ORE))
         {
-            try{
-                
-            
-            } catch (Exception ex) {
            
-                
-            }
         }
         
     }
