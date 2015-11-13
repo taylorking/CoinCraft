@@ -14,7 +14,7 @@ This is a minecraft plugin that introduces a new game mode, and allows players t
 
 
 
-This project was @jonjonsonjr, @nathanph and my submission for [VTHacks](http://vthacks.com/) in Spring of 2015. 
+This project was [@jonjonsonjr](https://github.com/jonjonsonjr), [@nathanph](https://github.com/nathanph) and my submission for [VTHacks](http://vthacks.com/) in Spring of 2015. 
 The project won the BookHolders prize, as well as Third place in the overall competition.
 
 ![Jon, Nate, and I presenting the project](http://i.imgur.com/RpSJnX1.jpg)
