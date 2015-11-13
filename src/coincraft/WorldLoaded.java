@@ -13,7 +13,7 @@ import org.bukkit.Material;
  *
  * @author tking
  */
-public class WorldLoaded implements Listener{
+public class WorldLoaded implements Listener {
     private Server server;
     private EntryPoint master;
     public WorldLoaded(Server server, EntryPoint master /** This is a hackathon I don't give a shit */) {
@@ -24,9 +24,9 @@ public class WorldLoaded implements Listener{
     public void worldLoaded(final org.bukkit.event.world.WorldLoadEvent eve) {
         String test = eve.getWorld().getName();
         test = eve.getWorld().toString();
-        if(eve.getWorld().getName().equals("jail")){
-           eve.getWorld().setPVP(false);
-           this.master.setJail(new Location(eve.getWorld(), 8, 69, -4));
+        if(eve.getWorld().getName().equals("jail")) {
+            eve.getWorld().setPVP(false);
+            this.master.setJail(new Location(eve.getWorld(), 8, 69, -4));
             this.server.createWorld(new org.bukkit.WorldCreator("battle"));
             this.master.setBattle(new Location(this.server.getWorld("battle"),66, 68, 204));
         }

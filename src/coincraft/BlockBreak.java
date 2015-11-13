@@ -17,8 +17,8 @@ public class BlockBreak implements org.bukkit.event.Listener {
     {
         this.server = server;
         this.p = p;
-    }        
-   
+    }
+
     @org.bukkit.event.EventHandler(priority = org.bukkit.event.EventPriority.LOW)
     public void onBreak(final org.bukkit.event.block.BlockBreakEvent eve) {
         double y = eve.getBlock().getLocation().getZ();
@@ -28,13 +28,13 @@ public class BlockBreak implements org.bukkit.event.Listener {
         }
         else if(eve.getBlock().getType().equals(org.bukkit.Material.DIAMOND_ORE))
         {
-            try{
-           com.mashape.unirest.request.HttpRequestWithBody req = new com.mashape.unirest.request.HttpRequestWithBody(HttpMethod.POST, "http://bitmine.herokuapp.com/api/winner");
-           req.header("Content-Type","application/json");
-           req.body("{\"winner\":\"" + eve.getPlayer().getDisplayName() + "\",\"diamond\":\"" + eve.getBlock().toString() +"\"}");
-           this.server.broadcastMessage(eve.getPlayer().getDisplayName() + " found the diamond!");
-           eve.getPlayer().sendMessage("You win!!!");
-           com.mashape.unirest.http.HttpResponse resp = req.asJson();
+            try {
+                com.mashape.unirest.request.HttpRequestWithBody req = new com.mashape.unirest.request.HttpRequestWithBody(HttpMethod.POST, "http://bitmine.herokuapp.com/api/winner");
+                req.header("Content-Type","application/json");
+                req.body("{\"winner\":\"" + eve.getPlayer().getDisplayName() + "\",\"diamond\":\"" + eve.getBlock().toString() +"\"}");
+                this.server.broadcastMessage(eve.getPlayer().getDisplayName() + " found the diamond!");
+                eve.getPlayer().sendMessage("You win!!!");
+                com.mashape.unirest.http.HttpResponse resp = req.asJson();
             } catch(Exception ex)
             {
                 Exception e = ex;
@@ -43,6 +43,6 @@ public class BlockBreak implements org.bukkit.event.Listener {
                 pl.teleport(this.p.getJail());
             }
         }
-        
+
     }
 }

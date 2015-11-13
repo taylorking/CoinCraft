@@ -21,26 +21,26 @@ public class EntryPoint extends JavaPlugin {
     public Location battle;
     public Location jail;
     public void onEnable() {
-     ready = new HashSet<Player>();
-      online_players = new HashSet<Player>();
-     Random randomizer = new Random();
-         this.getServer().getLogger().info("Coincraft Enabled.");
-         this.getServer().getPluginManager().registerEvents(new DispenserBlock(this.getServer()), this);
-         this.getServer().getPluginManager().registerEvents(new BlockBreak(this.getServer(), this), this);
-         this.getServer().getPluginManager().registerEvents(new PlayerReady(this.getServer(), this), this);
-         this.getServer().getPluginManager().registerEvents(new PlayerJoined(this.getServer(), this), this);
-         this.getServer().getPluginManager().registerEvents(new WorldLoaded(this.getServer(), this), this);
-         this.getServer().getPluginManager().registerEvents(new BlockPlace(this.getServer(), this), this);
- //        java.util.List<org.bukkit.World> w = this.getServer().getWorlds();
+        ready = new HashSet<Player>();
+        online_players = new HashSet<Player>();
+        Random randomizer = new Random();
+        this.getServer().getLogger().info("Coincraft Enabled.");
+        this.getServer().getPluginManager().registerEvents(new DispenserBlock(this.getServer()), this);
+        this.getServer().getPluginManager().registerEvents(new BlockBreak(this.getServer(), this), this);
+        this.getServer().getPluginManager().registerEvents(new PlayerReady(this.getServer(), this), this);
+        this.getServer().getPluginManager().registerEvents(new PlayerJoined(this.getServer(), this), this);
+        this.getServer().getPluginManager().registerEvents(new WorldLoaded(this.getServer(), this), this);
+        this.getServer().getPluginManager().registerEvents(new BlockPlace(this.getServer(), this), this);
+//        java.util.List<org.bukkit.World> w = this.getServer().getWorlds();
 
         //this.getServer().getWorld("battle").setSpawnLocation();
-         // Zero the diamonds in our chunk.
+        // Zero the diamonds in our chunk.
 
-         //Set<String> config = this.getConfig().getKeys(true);
-      //   Set<String> config = this.getConfig().getKeys(true);
-       
+        //Set<String> config = this.getConfig().getKeys(true);
+        //   Set<String> config = this.getConfig().getKeys(true);
+
 //this.getServer().getWorld("battle").getBlockAt(diamond).setType(org.bukkit.Material.DIAMOND_ORE);
-       
+
     }
     public HashSet<Player> getOnline() {
         return online_players;
@@ -48,7 +48,7 @@ public class EntryPoint extends JavaPlugin {
     public HashSet<Player> getReady() {
         return ready;
     }
-    
+
     public void playerReady(Player p)
     {
         ready.add(p);
@@ -65,5 +65,5 @@ public class EntryPoint extends JavaPlugin {
     public void setJail(Location jail) {
         this.jail = jail;
     }
-    
+
 }

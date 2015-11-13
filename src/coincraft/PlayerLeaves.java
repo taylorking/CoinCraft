@@ -11,7 +11,7 @@ import org.bukkit.event.Listener;
  */
 public class PlayerLeaves implements Listener {
     private EntryPoint e;
-    
+
     public PlayerLeaves(EntryPoint e) {
         this.e = e;
     }
@@ -19,7 +19,7 @@ public class PlayerLeaves implements Listener {
     public void onLeave(final org.bukkit.event.player.PlayerQuitEvent eve)
     {
         this.e.getOnline().remove(eve.getPlayer());
-    }       
+    }
     public void onKick(final org.bukkit.event.player.PlayerKickEvent eve) {
         this.e.getOnline().remove(eve.getPlayer());
     }
