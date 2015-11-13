@@ -21,7 +21,7 @@ The project won the BookHolders prize, as well as Third place in the overall com
 
 Unfortunately the backend for this plugin is no longer running on heroku, however you're welcome to download it and play with it. Jon's backend code is available [here](https://github.com/jonjonsonjr/pile-of-crap). 
 
-### Aknowledgements 
+### Acknowledgements 
 - [The CraftBukkit project](http://bukkit.org/) for making it possible to complete the project in one night
 - [Netbeans IDE](https://netbeans.org/) for making it possible to use maven, without having to use maven
 - [Unirest](http://unirest.io/) for allowing me to make web service calls in java, without having to make web service calls in java
