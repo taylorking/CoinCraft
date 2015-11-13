@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
 
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package coincraft;
 import com.mashape.unirest.http.HttpMethod;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -43,10 +38,10 @@ public class BlockBreak implements Listener {
             try {
                 HttpRequestWithBody req = new HttpRequestWithBody(HttpMethod.POST, "http://bitmine.herokuapp.com/api/winner");
                 req.header("Content-Type","application/json");
-                // Tell the server somebody has one
+                // Tell the server somebody has won
                 req.body("{\"winner\":\"" + eve.getPlayer().getDisplayName() + "\",\"diamond\":\"" + eve.getBlock().toString() +"\"}");
                 this.server.broadcastMessage(eve.getPlayer().getDisplayName() + " found the diamond!");
-                // Tell the player they have one
+                // Tell the player they have won
                 eve.getPlayer().sendMessage("You win!!!");
                 HttpResponse resp = req.asJson();
             } catch(Exception ex)
