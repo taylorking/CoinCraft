@@ -5,6 +5,10 @@
  */
 package coincraft;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerKickEvent;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.EventHandler;
 /**
  *
  * @author tking
@@ -15,12 +19,12 @@ public class PlayerLeaves implements Listener {
     public PlayerLeaves(EntryPoint e) {
         this.e = e;
     }
-    @org.bukkit.event.EventHandler (priority = org.bukkit.event.EventPriority.LOW)
-    public void onLeave(final org.bukkit.event.player.PlayerQuitEvent eve)
+    @EventHandler(priority = EventPriority.LOW)
+    public void onLeave(final PlayerQuitEvent eve)
     {
         this.e.getOnline().remove(eve.getPlayer());
     }
-    public void onKick(final org.bukkit.event.player.PlayerKickEvent eve) {
+    public void onKick(final PlayerKickEvent eve) {
         this.e.getOnline().remove(eve.getPlayer());
     }
 }

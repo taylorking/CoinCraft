@@ -4,22 +4,26 @@
  * and open the template in the editor.
  */
 package coincraft;
-
+import org.bukkit.Server;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.EventHandler;
 /**
  *
  * @author tking
  */
-public class PlayerJoined implements org.bukkit.event.Listener {
-    private org.bukkit.Server server;
+public class PlayerJoined implements Listener {
+    private Server server;
     private EntryPoint master;
 
-    public PlayerJoined(org.bukkit.Server server, EntryPoint master) {
+    public PlayerJoined(Server server, EntryPoint master) {
         this.server = server;
         this.master = master;
     }
-    @org.bukkit.event.EventHandler(priority = org.bukkit.event.EventPriority.LOW)
-    public void onPlayerJoined(final org.bukkit.event.player.PlayerJoinEvent eve) {
-        this.master.getOnline().add(eve.getPlayer());
+    @EventHandler(priority = EventPriority.LOW)
+    public void onPlayerJoined(final PlayerJoinEvent eve) {
+        master.getOnline().add(eve.getPlayer());
         eve.getPlayer().teleport(this.master.getJail());
         //    eve.getPlayer().teleport(new org.bukkit.Location(this.server.getWorld("battle"),66, 208, 68));
     }

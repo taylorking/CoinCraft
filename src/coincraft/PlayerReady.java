@@ -10,27 +10,33 @@ import org.bukkit.Server;
 import org.bukkit.Location;
 import java.util.Random;
 import org.bukkit.Material;
-import com.mashape.unirest.request.*;
+import com.mashape.unirest.request.HttpRequest;
+import com.mashape.unirest.http.HttpResponse;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.BlockDamageEvent;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.EventHandler;
+import org.bukkit.World;
+import com.mashape.unirest.request.HttpRequestWithBody;
 /**
  *
  * @author tking
  */
 public class PlayerReady implements Listener {
-    private Server server;
-    private EntryPoint p;
+    private final Server server;
+    private final EntryPoint p;
     public PlayerReady(Server s, EntryPoint p) {
         this.server = s;
         this.p = p;
     }
-    @org.bukkit.event.EventHandler(priority=org.bukkit.event.EventPriority.LOW)
-    public void onPlayerReady(final org.bukkit.event.block.BlockDamageEvent eve)
+    @EventHandler(priority=EventPriority.LOW)
+    public void onPlayerReady(final BlockDamageEvent eve)
     {
         if(eve.getBlock().getWorld().getName().equals("jail")) {
 
             try {
-                com.mashape.unirest.request.HttpRequest req = new com.mashape.unirest.request.HttpRequest(HttpMethod.GET, "http://bitmine.herokuapp.com/api/players/" + eve.getPlayer().getDisplayName());
-                com.mashape.unirest.http.HttpResponse resp = req.asString();
+                HttpRequest req = new HttpRequest(HttpMethod.GET, "http://bitmine.herokuapp.com/api/players/" + eve.getPlayer().getDisplayName());
+                HttpResponse resp = req.asString();
                 switch(resp.getStatus()) {
                 case 500:
                     this.server.broadcastMessage("HTTP 500 Jon has screwed something up.");
@@ -62,12 +68,12 @@ public class PlayerReady implements Listener {
         // HTTP 402: Not Paid
         // HTTP 200: Ready
     }
-    public void randomize(org.bukkit.World world) {
+    public void randomize(World world) {
         for(int x = 59; x < 83; x++) {
             for(int y = 0 ; y < world.getMaxHeight(); y++) {
                 for(int z = 197; z < 218; z++) {
-                    if(world.getBlockAt(x, y, z).getType().equals(org.bukkit.Material.DIAMOND_ORE)) {
-                        world.getBlockAt(x,y,z).setType(org.bukkit.Material.STONE);
+                    if(world.getBlockAt(x, y, z).getType().equals(Material.DIAMOND_ORE)) {
+                        world.getBlockAt(x,y,z).setType(Material.STONE);
                     }
                 }
             }
@@ -76,12 +82,11 @@ public class PlayerReady implements Listener {
         Location diamond = new Location(world,(double)59 + randomizer.nextInt(83 - 59),(double)randomizer.nextInt(5) + 1,(double) 197 + randomizer.nextInt(218 - 197));
         world.getBlockAt(diamond).setType(Material.DIAMOND_ORE);
         try {
-            com.mashape.unirest.request.HttpRequestWithBody req = new com.mashape.unirest.request.HttpRequestWithBody(HttpMethod.POST, "http://bitmine.herokuapp.com/api/diamond");
+            HttpRequestWithBody req = new HttpRequestWithBody(HttpMethod.POST, "http://bitmine.herokuapp.com/api/diamond");
             req.header("Content-Type", "application/json");
             req.body("{\"Diamond\":\"" + diamond.toString()+"\"}");
-            com.mashape.unirest.http.HttpResponse resp = req.asJson();
-        } catch (Exception ex)
-        {
+            HttpResponse resp = req.asJson();
+        } catch (Exception ex) {
             Exception e = ex;
         }
     }
