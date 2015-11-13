@@ -15,16 +15,16 @@ import org.bukkit.event.EventHandler;
  */
 public class PlayerJoined implements Listener {
     private Server server;
-    private EntryPoint master;
+    private EntryPoint pluginCore;
 
-    public PlayerJoined(Server server, EntryPoint master) {
+    public PlayerJoined(Server server, EntryPoint pluginCore) {
         this.server = server;
-        this.master = master;
+        this.pluginCore = pluginCore;
     }
     @EventHandler(priority = EventPriority.LOW)
     public void onPlayerJoined(final PlayerJoinEvent eve) {
-        master.getOnline().add(eve.getPlayer());
-        eve.getPlayer().teleport(this.master.getJail());
+        pluginCore.getOnline().add(eve.getPlayer());
+        eve.getPlayer().teleport(this.pluginCore.getJail());
         //    eve.getPlayer().teleport(new org.bukkit.Location(this.server.getWorld("battle"),66, 208, 68));
     }
 

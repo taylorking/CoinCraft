@@ -14,6 +14,8 @@ import com.mashape.unirest.http.HttpResponse;
 import org.bukkit.Server;
 import org.bukkit.event.Listener;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.Server;
 /**
  *
  *
@@ -21,11 +23,11 @@ import org.bukkit.Material;
  */
 public class BlockBreak implements Listener {
     private final Server server;
-    private final EntryPoint p;
-    public BlockBreak(org.bukkit.Server server, EntryPoint p)
+    private final EntryPoint pluginCore;
+    public BlockBreak(Server server, EntryPoint pluginCore)
     {
         this.server = server;
-        this.p = p;
+        this.pluginCore = pluginCore;
     }
 
     @EventHandler (priority = EventPriority.LOW)
@@ -41,16 +43,19 @@ public class BlockBreak implements Listener {
             try {
                 HttpRequestWithBody req = new HttpRequestWithBody(HttpMethod.POST, "http://bitmine.herokuapp.com/api/winner");
                 req.header("Content-Type","application/json");
+                // Tell the server somebody has one
                 req.body("{\"winner\":\"" + eve.getPlayer().getDisplayName() + "\",\"diamond\":\"" + eve.getBlock().toString() +"\"}");
                 this.server.broadcastMessage(eve.getPlayer().getDisplayName() + " found the diamond!");
+                // Tell the player they have one
                 eve.getPlayer().sendMessage("You win!!!");
                 HttpResponse resp = req.asJson();
             } catch(Exception ex)
             {
                 Exception e = ex;
             }
-            for(org.bukkit.entity.Player pl : this.p.getOnline()) {
-                pl.teleport(this.p.getJail());
+            // Move everybody back to the jail
+            for(Player pl : this.pluginCore.getOnline()) {
+                pl.teleport(this.pluginCore.getJail());
             }
         }
 

@@ -24,10 +24,10 @@ import com.mashape.unirest.request.HttpRequestWithBody;
  */
 public class PlayerReady implements Listener {
     private final Server server;
-    private final EntryPoint p;
-    public PlayerReady(Server s, EntryPoint p) {
+    private final EntryPoint pluginCore;
+    public PlayerReady(Server s, EntryPoint pluginCore) {
         this.server = s;
-        this.p = p;
+        this.pluginCore = pluginCore;
     }
     @EventHandler(priority=EventPriority.LOW)
     public void onPlayerReady(final BlockDamageEvent eve)
@@ -49,17 +49,17 @@ public class PlayerReady implements Listener {
                     break;
                 case 200:
                     eve.getPlayer().sendMessage("Buy in complete. You have been marked as ready to compete.");
-                    this.p.playerReady(eve.getPlayer());
+                    this.pluginCore.playerReady(eve.getPlayer());
                     break;
                 }
             } catch (Exception ex) {
                 Exception e = ex;
             }
-
-            if(this.p.getOnline().size() == this.p.getReady().size()) {
-                randomize(p.getBattle().getWorld());
-                for(Player person : this.p.getReady()) {
-                    person.teleport(this.p.getBattle());
+            // If everybody is ready, the game can begin.
+            if(this.pluginCore.getOnline().size() == this.pluginCore.getReady().size()) {
+                randomize(pluginCore.getBattle().getWorld());
+                for(Player person : this.pluginCore.getReady()) {
+                    person.teleport(this.pluginCore.getBattle());
                 }
             }
         }
@@ -68,7 +68,9 @@ public class PlayerReady implements Listener {
         // HTTP 402: Not Paid
         // HTTP 200: Ready
     }
+    // Clear the playing field, Replace all the diamond ore with stone, hide one diamond ore block
     public void randomize(World world) {
+        // These magic numbers are the coordinates for our playing field.
         for(int x = 59; x < 83; x++) {
             for(int y = 0 ; y < world.getMaxHeight(); y++) {
                 for(int z = 197; z < 218; z++) {
@@ -81,6 +83,7 @@ public class PlayerReady implements Listener {
         Random randomizer = new Random();
         Location diamond = new Location(world,(double)59 + randomizer.nextInt(83 - 59),(double)randomizer.nextInt(5) + 1,(double) 197 + randomizer.nextInt(218 - 197));
         world.getBlockAt(diamond).setType(Material.DIAMOND_ORE);
+        // Tell the server where we hid the diamond.
         try {
             HttpRequestWithBody req = new HttpRequestWithBody(HttpMethod.POST, "http://bitmine.herokuapp.com/api/diamond");
             req.header("Content-Type", "application/json");

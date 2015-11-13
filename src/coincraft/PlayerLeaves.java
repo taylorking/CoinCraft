@@ -14,17 +14,16 @@ import org.bukkit.event.EventHandler;
  * @author tking
  */
 public class PlayerLeaves implements Listener {
-    private EntryPoint e;
-
-    public PlayerLeaves(EntryPoint e) {
-        this.e = e;
+    private final EntryPoint pluginCore;
+    public PlayerLeaves(EntryPoint pluginCore) {
+        this.pluginCore = pluginCore;
     }
     @EventHandler(priority = EventPriority.LOW)
     public void onLeave(final PlayerQuitEvent eve)
     {
-        this.e.getOnline().remove(eve.getPlayer());
+        this.pluginCore.getOnline().remove(eve.getPlayer());
     }
     public void onKick(final PlayerKickEvent eve) {
-        this.e.getOnline().remove(eve.getPlayer());
+        this.pluginCore.getOnline().remove(eve.getPlayer());
     }
 }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package coincraft;
 import org.bukkit.Server;
 import org.bukkit.event.Listener;
@@ -16,18 +12,20 @@ import org.bukkit.event.EventHandler;
  */
 public class WorldLoaded implements Listener {
     private final Server server;
-    private final EntryPoint master;
-    public WorldLoaded(Server server, EntryPoint master /** This is a hackathon i'm tired, going to keep a reference to the core of the plugin */) {
+    private final EntryPoint pluginCore;
+    public WorldLoaded(Server server, EntryPoint pluginCore) { // This is a hackathon i'm tired, going to keep a reference to the core of the plugin */) {
         this.server = server;
-        this.master = master;
+        this.pluginCore = pluginCore;
     }
     @EventHandler (priority = EventPriority.LOW)
     public void worldLoaded(final WorldLoadEvent eve) {
         if(eve.getWorld().getName().equals("jail")) {
+            // Don't allow the players to kill each other, that could be come complicated if they respawn
             eve.getWorld().setPVP(false);
-            this.master.setJail(new Location(eve.getWorld(), 8, 69, -4));
+            // These magic numbers define the coordinates of the jail
+            this.pluginCore.setJail(new Location(eve.getWorld(), 8, 69, -4));
             this.server.createWorld(new org.bukkit.WorldCreator("battle"));
-            this.master.setBattle(new Location(this.server.getWorld("battle"),66, 68, 204));
+            this.pluginCore.setBattle(new Location(this.server.getWorld("battle"),66, 68, 204));
         }
     }
 }

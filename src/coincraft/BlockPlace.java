@@ -15,15 +15,19 @@ import org.bukkit.event.EventHandler;
  */
 public class BlockPlace implements Listener {
     private final Server server;
-    private final EntryPoint entry;
-    public BlockPlace(Server server, EntryPoint entry) {
+    private final EntryPoint pluginCore;
+    public BlockPlace(Server server, EntryPoint pluginCore) {
         this.server = server;
-        this.entry = entry;
+        this.pluginCore = pluginCore;
 
     }
     @EventHandler (priority  = EventPriority.LOW)
     public void blockPlace(final BlockPlaceEvent eve) {
-        if(!eve.getPlayer().isOp() && (eve.getBlock().getLocation().getX() < 59 || eve.getBlock().getLocation().getX() > 83 || eve.getBlock().getLocation().getZ() > 218 || eve.getBlock().getLocation().getZ() < 197))
+        // If the player is an OP they are allowed to put blocks wherever
+        // These magic numbers are hardcoded locations in the minecraft world.
+        if(!eve.getPlayer().isOp() && (eve.getBlock().getLocation().getX() < 59 ||
+                                       eve.getBlock().getLocation().getX() > 83 || eve.getBlock().getLocation().getZ() > 218 ||
+                                       eve.getBlock().getLocation().getZ() < 197))
         {
             eve.setCancelled(true);
         }

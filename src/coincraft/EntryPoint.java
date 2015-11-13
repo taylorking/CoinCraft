@@ -1,13 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package coincraft;
-import java.util.Random;
+/**
+ * Coincraft. Taylor King 2015
+ * This was a hackathon project written in only a few hours, with a few hours of sleep.
+ * I spent more time making it work than making it good.
+ * Expect to see things like magic numbers and things that might not make sense.
+ */
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.Location;
-import org.bukkit.Material;
+
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.entity.Player;
 import java.util.HashSet;
