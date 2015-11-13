@@ -41,8 +41,7 @@ public class EntryPoint extends JavaPlugin {
     public HashSet<Player> getReady() {
         return ready;
     }
-    public void playerReady(Player p)
-    {
+    public void playerReady(Player p) {
         ready.add(p);
     }
     public Location getBattle() {

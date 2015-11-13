@@ -30,8 +30,7 @@ public class PlayerReady implements Listener {
         this.pluginCore = pluginCore;
     }
     @EventHandler(priority=EventPriority.LOW)
-    public void onPlayerReady(final BlockDamageEvent eve)
-    {
+    public void onPlayerReady(final BlockDamageEvent eve) {
         if(eve.getBlock().getWorld().getName().equals("jail")) {
 
             try {

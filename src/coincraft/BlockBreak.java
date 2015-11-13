@@ -19,8 +19,7 @@ import org.bukkit.Server;
 public class BlockBreak implements Listener {
     private final Server server;
     private final EntryPoint pluginCore;
-    public BlockBreak(Server server, EntryPoint pluginCore)
-    {
+    public BlockBreak(Server server, EntryPoint pluginCore) {
         this.server = server;
         this.pluginCore = pluginCore;
     }
@@ -33,8 +32,7 @@ public class BlockBreak implements Listener {
         {
             eve.setCancelled(true);
         }
-        else if(eve.getBlock().getType().equals(Material.DIAMOND_ORE))
-        {
+        else if(eve.getBlock().getType().equals(Material.DIAMOND_ORE)) {
             try {
                 HttpRequestWithBody req = new HttpRequestWithBody(HttpMethod.POST, "http://bitmine.herokuapp.com/api/winner");
                 req.header("Content-Type","application/json");
@@ -44,9 +42,8 @@ public class BlockBreak implements Listener {
                 // Tell the player they have won
                 eve.getPlayer().sendMessage("You win!!!");
                 HttpResponse resp = req.asJson();
-            } catch(Exception ex)
-            {
-                Exception e = ex;
+            } catch(Exception ex) {
+                // Don't do anything with it
             }
             // Move everybody back to the jail
             for(Player pl : this.pluginCore.getOnline()) {

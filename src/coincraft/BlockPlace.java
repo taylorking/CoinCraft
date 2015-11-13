@@ -27,9 +27,10 @@ public class BlockPlace implements Listener {
         // These magic numbers are hardcoded locations in the minecraft world.
         if(!eve.getPlayer().isOp() && (eve.getBlock().getLocation().getX() < 59 ||
                                        eve.getBlock().getLocation().getX() > 83 || eve.getBlock().getLocation().getZ() > 218 ||
-                                       eve.getBlock().getLocation().getZ() < 197))
-        {
+                                       eve.getBlock().getLocation().getZ() < 197)) {
+
             eve.setCancelled(true);
+
         }
 
     }
